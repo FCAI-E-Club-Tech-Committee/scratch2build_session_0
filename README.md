@@ -94,12 +94,17 @@ double calculateTotal(double price, const string promoCode) {
     double discount = 0.0;
 
     // TODO: Grant a 15% discount (0.15) when promoCode matches "ECLUB2026"
+    if (promoCode == "ECLUB2026") {
+        discount = 0.15;
+    }
+    
+    return price * (1.0 - discount);
 }
 
 int main() {
-    // TODO: Verify that test1 returns true when no discount is applied, test2 returns false when 15% discount is applied
-    bool test1 = true;
-    bool test2 = true;
+    // TODO: Verify that test1 returns true when no discount is applied, test2 returns true when 15% discount is applied
+    bool test1 = (calculateTotal(100.0, "INVALID_CODE") == 100.0);
+    bool test2 = (calculateTotal(100.0, "ECLUB2026") == 85.0);
 
     cout << "Test 1 (No Promo): " << (test1 ? "PASS" : "FAIL") << endl;
     cout << "Test 2 (Valid Promo): " << (test2 ? "PASS" : "FAIL") << endl;
@@ -112,4 +117,3 @@ int main() {
 
     return 0;
 }
-```
